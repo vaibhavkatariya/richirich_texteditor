@@ -31,7 +31,6 @@ and open the template in the editor.
     display: inline-block;
     border: 1px solid #ddd;
     padding: 5px;
-    cursor: pointer;
 }
 
 #controls div.maincontrols{
@@ -40,8 +39,15 @@ and open the template in the editor.
     padding: 10px;
     width: 97%;
 }
+#controls div.maincontrols div,#controls div.control-panel div{
+    background-color: #fff;
+    /* box-shadow: 0 0 10px #999 inset; */
+     cursor: pointer;
+}
 #controls div.maincontrols > .control-panel-controlerbutton{
     float: right;
+    background-color: #fff;
+    box-shadow: 0 0 10px #999 inset;
 }
 #controls div.control-panel{
     border: 0px;
@@ -51,8 +57,11 @@ and open the template in the editor.
     margin-top: 10px;
     display: none;
 }
-#controls div.font-selector{
-    border: 0px
+ 
+#controls .maincontrols div.font-selector{
+    border: 0px;
+    background-color :  #f0f0f0;
+    box-shadow: none;
 }
 #controls div.font-selector select {
 font-size: 20px;
