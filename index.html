@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Editor</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+           <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+        <script>
+            
+            var editorconfiguration = false;
+             
+        </script>
+        <script src="editor_js.js"></script>
+        <script>
+           var editor = editorconfiguration;
+        </script>
+        <style> 
+         @font-face {
+  font-family: 'FontAwesome';
+  src: url('fontawesome-webfont.eot?v=4.3.0');
+  src: url('fontawesome-webfont.eot?#iefix&v=4.3.0') format('embedded-opentype'), url('fontawesome-webfont.woff2?v=4.3.0') format('woff2'), url('fontawesome-webfont.woff?v=4.3.0') format('woff'), url('fontawesome-webfont.ttf?v=4.3.0') format('truetype'), url('fontawesome-webfont.svg?v=4.3.0#fontawesomeregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+        </style>
+        
+    </head>
+    <body onLoad="editor.designermode();">
+        <div>Editor</div>
+        <div  ng-app="" id="maincontainer">
+            <div id="controls">
+                
+                <div class="maincontrols">
+                    <div class="control-panel-controlerbutton" onclick="editor.ctrlPanel();">
+                    <i class="fa fa-bars"></i>
+                </div>
+                
+                <div class="font-selector">
+                    <select>
+                        <option>times new roman</option>
+                        <option>helvetica</option>
+                        <option>helvitica neo</option>
+                        <option>san serif</option>
+                    </select>
+                </div>
+                
+                <div class="bold-button" onclick="editor.fontBold();" title="Bold"><i class="fa fa-bold"></i></div>
+                <div class="italic-button" onclick="editor.fontItalic()"  title="Italic"><i class="fa fa-italic"></i></div>
+                <div class="underline-button" onclick="editor.underLinetext();"  title="Underline"><i class="fa fa-underline"></i></div>
+                <div class="undo" onclick="editor.textUndo();"  title="Undo"> <i class="fa fa-undo"></i> </div>
+                <div class="redo" onclick="editor.textRedo();"  title="Redo"> <i class="fa fa-repeat"></i> </div>
+                    
+                </div>
+                
+                
+             <div class="control-panel close">
+                   <div class="heading-selector" title="Change Heading">
+                    <select id="headingChange" onchange="editor.headingSelector();">
+                        <option>H1</option>
+                        <option>H2</option>
+                        <option>H3</option>
+                        <option>H4</option>
+                        <option>H5</option>
+                        <option>H6</option>
+                    </select>
+                </div>
+                      <div class="strike" onclick="editor.strike();"  title="Strikethrough"> <i class="fa fa-strikethrough"></i> </div>
+                      <div class="subscript" onclick="editor.subscript();"  title="Subscript"> <i class="fa fa-subscript"></i> </div>
+                      <div class="superscript" onclick="editor.superscript();"  title="Superscript"> <i class="fa fa-superscript"></i> </div>
+                       <div class="indent" onclick="editor.indent();"  title="Indent"> <i class="fa fa-indent"></i> </div>
+                       <div class="outdent" onclick="editor.outdent();"  title="Outdent"> <i class="fa fa-outdent"></i> </div>
+                       <div class="justify" onclick="editor.justify();" title="Allign justify"> <i class="fa fa-align-justify"></i> </div>
+                       <div class="center" onclick="editor.center();" title="Allign center"" > <i class="fa fa-align-center"></i> </div>
+                       <div class="left" onclick="editor.left();" title="Allign left""> <i class="fa fa-align-left"></i> </div>
+                       <div class="right" onclick="editor.right();" title="Allign right""> <i class="fa fa-align-right"></i> </div>
+                        <div class="link" onclick="editor.link();" title="Createlink"> <i class="fa fa-link"></i> </div>
+                        <div class="unlink" onclick="editor.unlink();" title="Unlink"> <i class="fa fa-chain-broken"></i> </div>
+                         <div class="ul" onclick="editor.ul();" title="Unorderedlist"> <i class="fa fa-list-ul"></i> </div>
+                         <div class="ol" onclick="editor.ol();" title="Orderedlist"> <i class="fa fa-list-ol"></i> </div>
+                         <div class="hr" onclick="editor.hr();" title="Horizontalrule"> ____</div>
+                        <div class="selectall" onclick="editor.selectall();"  title="Selectall"> <i class="fa fa-check"></i> </div>
+                         <div class="delete" onclick="editor.delete();" title="Erase"> <i class="fa fa-eraser"  ></i> </div>
+                         <div class="removestyle" onclick="editor.removestyle();" title="clear format" > <i class="fa fa-ban"></i> </div>
+                         <div class="code-button htmleditor_off"  title="Switch to htmleditor" onclick="editor.htmleditor();"><i class="fa fa-code"></i></div>
+       </div>
+            
+            </div>
+            <div  id="contentarea">
+                
+                <iframe  name="edii" id="edii"></iframe>
+                <div id="htmlcontent" contenteditable="true" style="display:none;"></div>
+
+            </div>
+
+            <div id="wrappingElement"> The text wrapped in <i class="fa fa-angle-double-right"></i> <span id="wrappingElementtext"></span> </div>
+        </div>
+        
+        
+      
+        
+        <script>  
+            window.frames["edii"].document.body.onclick = editor.sourcElem; 
+        </script>
+        
+    </body>
+</html>
